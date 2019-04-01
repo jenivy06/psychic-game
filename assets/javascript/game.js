@@ -3,8 +3,7 @@ var lost = 0;
 var attemptsLeft = 10;
 var lettersGuessed = []
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var userGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
+var userGuessSoFar = [];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 var userLetter = document.getElementById("letterGuess");
@@ -30,15 +29,20 @@ document.onkeyup = function(event) {
 if (userGuess !== computerGuess) {
     attemptsLeft--;
     console.log(attemptsLeft);
+    document.getElementById("wins").innerHTML = "Wins: " + won;
+    document.getElementById("losses").innerHTML = "Losses: " + lost;
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + attemptsLeft;
-    document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: " + userGuess + ", ";
+    userGuessSoFar.push(userGuess);
+    document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: " + userGuessSoFar + ",";
     if (attemptsLeft === 0){
+        lost++;
+        attemptsLeft = 11;
+        attemptsLeft--
         alert("Sorry, you lose!");
+        document.getElementById("wins").innerHTML = "Wins: " + won;
+        document.getElementById("losses").innerHTML = "Losses: " + lost;
         document.getElementById("guessesLeft").innerHTML = "Guesses left: ";
         document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: ";
-        lost++;
-        document.getElementById("losses").innerHTML = "Losses: " + lost;
-        attemptsLeft = 10;
         }
 
     }

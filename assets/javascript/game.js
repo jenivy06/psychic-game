@@ -33,7 +33,7 @@ if (userGuess !== computerGuess) {
     document.getElementById("losses").innerHTML = "Losses: " + lost;
     document.getElementById("guessesLeft").innerHTML = "Guesses left: " + attemptsLeft;
     userGuessSoFar.push(userGuess);
-    document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: " + userGuessSoFar + ",";
+    document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: " + userGuessSoFar + ", ";
     if (attemptsLeft === 0){
         lost++;
         attemptsLeft = 11;
@@ -42,7 +42,9 @@ if (userGuess !== computerGuess) {
         document.getElementById("wins").innerHTML = "Wins: " + won;
         document.getElementById("losses").innerHTML = "Losses: " + lost;
         document.getElementById("guessesLeft").innerHTML = "Guesses left: ";
-        document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: ";
+        userGuessSoFar = []
+        document.getElementById("guessesSoFar").innerHTML = "Your guesses so far: " + userGuessSoFar;
+    
         }
 
     }
@@ -53,6 +55,7 @@ if (userGuess !== computerGuess) {
     else if (userGuess === computerGuess) {
         alert("Winner winner, chicken dinner!");
         won++;
+        userGuessSoFar = []
         document.getElementById("wins").innerHTML = "Wins: " + won;
         attemptsLeft = 10;
         document.getElementById("guessesLeft").innerHTML = "Guesses left: ";
